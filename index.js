@@ -20,7 +20,7 @@ $('*').click(function(event) {
     })  
     setTimeout(() => { $('#start').show();  thud.play(); }, 2000);    
     new TypeIt("#start", {
-      speed: 0,
+      speed: 5,
       waitUntilVisible: true,
       afterStep: function() {
         const clone = key.cloneNode();
