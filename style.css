@@ -59,23 +59,25 @@ ul {
   transform: translate(-50%, -50%);  
 }
 
-a{
-  color: rgb(177, 177, 255);
-  padding: 10px;
-  font-size: 75%;
-  font-family: 'Press Start 2P', cursive;
-  text-decoration: underline;
-}
-
-a:hover{
-  color: white;
-  cursor: pointer;
-}
-
 #musictoggle {
   position: absolute;
   margin-bottom: 1%;
   position: absolute;
   bottom: 0;
   opacity: 0;  
+}
+
+
+a{
+  color: rgb(177, 177, 255);
+  padding: 10px;
+  font-size: 75%;
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: underline;
+  pointer-events: none;
+}
+
+a:hover{
+  color: white;
+  cursor: pointer;
 }
