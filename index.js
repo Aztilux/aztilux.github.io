@@ -45,6 +45,9 @@ $('*').click(function(event) {
         .delete()
         .pause(1000)         
         .go()        
+        $('a').css({
+          'pointer-events': 'all'
+        })
         setTimeout(() => { thud.play(); $("#title").animate( {'opacity': '1'}); }, 1000);
         setTimeout(() => { $("#subtitle").animate( {'opacity': '1'}); }, 2000);
         setTimeout(() => { $("ul").animate( {'opacity': '1'}); }, 3000);
