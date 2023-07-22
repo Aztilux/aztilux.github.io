@@ -17,6 +17,7 @@
     <script src="index.js"></script>     
   </head>
   <body>
+    <div id="starter_div" onClick="startclicked()"></div>
     <h1 id="start" style="text-align:center">[azti]<br>:// Click to enter.</h1>
     <h1 id="title" style="text-align:center">Azti</h1>       
     <h2 id="subtitle" style="text-align: center">:// Go ahead and DM me.</h2
@@ -25,8 +26,13 @@
           <li><a href="https://discordapp.com/users/974396088482152478" target="_blank">discord</a></li>
           <li><a href="https://www.roblox.com/users/452140477/profile" target="_blank">roblox</a></li>
           <li><a onClick="meow()">???</a></li>
-        </ul>
+        </ul>  
       </div>
-        <a onClick="togglePlay()" id="musictoggle">Mute</a>    
+      <div>
+        <h3 class="info" id="timer">time_in_page = 00:00:00</h3> 
+        <h3 class="info" id="meow_counter">meow_clicks = 0 </h3> 
+        <h3 class="info">now_playing = get_prommed.mp3</h3>                            
+      </div>      
+      <a onClick="togglePlay()" id="musictoggle">Mute</a>    
   </body>       
 </html>
