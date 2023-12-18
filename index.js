@@ -3,8 +3,10 @@ var fd1 = new Audio('fd1.mp3');
 var key = new Audio('key.mp3');
 var meoww = new Audio('meow.mp3')
 fd1.loop = true
-fd1.volume = 0.3
+fd1.volume = 0.2
+key.volume = 0.1
 var started = false
+var finished = false
 
 function startclicked() {
   if (!started) { 
@@ -25,7 +27,7 @@ function startclicked() {
       waitUntilVisible: true,
       afterStep: function() {
         const clone = key.cloneNode();
-        clone.volume = 0.1
+        clone.volume = 0.05
         clone.play()
       },
       afterComplete: function() {
@@ -47,10 +49,10 @@ function startclicked() {
         $('a').css({
           'pointer-events': 'all'
         })
-        setTimeout(() => { thud.play(); $("#title").animate( {'opacity': '1'}); }, 1000);
+        setTimeout(() => { $("#title").animate( {'opacity': '1'}); }, 1000);
         setTimeout(() => { $("#subtitle").animate( {'opacity': '1'}); }, 2000);
         setTimeout(() => { $("ul").animate( {'opacity': '1'}); }, 3000);
-        setTimeout(() => { $("#musictoggle").animate( {'opacity': '1'}); $(".info").animate( {'opacity': '1'});}, 4000);
+        setTimeout(() => { $("#musictoggle").animate( {'opacity': '1'}); $(".info").animate( {'opacity': '1'}); finished = true;}, 4000);
         updateTimer()
         fd1.play()  
       }
@@ -58,15 +60,15 @@ function startclicked() {
   .pause(1000)
   .type("<br>Load_System = { Azti's #!@#$D }")
   .type("<br>Loading_page...")
-  .type("<br>Starting audio = { Murder_drones: @#$$%*&#$& } ")
+  .type("<br>Starting audio = { CapzLock: D@#TSCYE } ")
   .type("<br>Loading = ")
-  .options({ speed: 100 })
+  .options({ speed: 50 })
   .type("[#######################]")
-  .pause(3000)
+  .pause(2000)
   .empty()
   .options({ speed: 10 })
-  .type("Azti??")
-  .pause(2000)
+  .type("Welcome.")
+  .pause(1000)
   .go()
   }
 }; 
@@ -114,3 +116,15 @@ function updateTimer() {
       timerElement.textContent = "time_in_page = " + formatTime(elapsedTimeInSeconds);
   }, 1000); // Update every second (1000 milliseconds)
 }
+
+
+function VisibilityChange() {
+  if (document.hidden && finished) {
+    $(fd1).animate({volume: 0}, 400);
+    setTimeout(() => { fd1.pause(); }, 400);
+  } else if (musict && finished) {
+    fd1.play();
+    $(fd1).animate({volume: 0.2}, 400);
+  }
+}
+document.addEventListener("visibilitychange", VisibilityChange, false);

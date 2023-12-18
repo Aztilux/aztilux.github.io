@@ -19,6 +19,7 @@ body{
 
 h1{
   color: white;
+  text-shadow: 0 0 15px #ffffff;
   font-size: 75%;
   position: absolute;
   top: 50%;
@@ -32,11 +33,13 @@ h1{
 #title{
   opacity: 0;
   padding-bottom: 100px;
+  text-shadow: 0 0 15px #ffffff;
   font-size: 130%;    
 }
 
 #subtitle{
   color: white;
+  text-shadow: 0 0 15px #ffffff;
   font-size: 75%;
   opacity: 0;
   position: absolute;
@@ -51,6 +54,7 @@ h1{
 .info{
   color: white;
   padding: 3px;
+  text-shadow: 0 0 15px #ffffff;
   font-size: 75%;
   font-family: 'Press Start 2P', cursive;
   pointer-events: none;
@@ -86,7 +90,8 @@ ul {
 
 
 a{
-  color: rgb(196, 151, 255);
+  color: rgb(56, 53, 255);
+  text-shadow: 0 0 15px rgb(56, 53, 255);
   padding: 10px;
   font-size: 75%;
   font-family: 'Press Start 2P', cursive;
@@ -96,5 +101,6 @@ a{
 
 a:hover{
   color: white;
+  text-shadow: 0 0 15px #ffffff;
   cursor: pointer;
 }
