@@ -1,7 +1,7 @@
-var thud = new Audio('thud.mp3');
-var fd1 = new Audio('fd1.mp3');
-var key = new Audio('key.mp3');
-var meoww = new Audio('meow.mp3')
+var thud = new Audio('resources/thud.mp3');
+var fd1 = new Audio('resources/fd1.mp3');
+var key = new Audio('resources/key.mp3');
+var meoww = new Audio('resources/meow.mp3')
 fd1.loop = true
 fd1.volume = 0.2
 key.volume = 0.1
@@ -52,7 +52,7 @@ function startclicked() {
         setTimeout(() => { $("#title").animate( {'opacity': '1'}); }, 1000);
         setTimeout(() => { $("#subtitle").animate( {'opacity': '1'}); }, 2000);
         setTimeout(() => { $("ul").animate( {'opacity': '1'}); }, 3000);
-        setTimeout(() => { $("#musictoggle").animate( {'opacity': '1'}); $(".info").animate( {'opacity': '1'}); finished = true;}, 4000);
+        setTimeout(() => { $("#musictoggle").animate( {'opacity': '1'}); $(".info").animate( {'opacity': '1'}); $(".dot").css( {'opacity': '1'}); finished = true;}, 4000);
         updateTimer()
         fd1.play()  
       }
@@ -128,3 +128,50 @@ function VisibilityChange() {
   }
 }
 document.addEventListener("visibilitychange", VisibilityChange, false);
+
+const dots = [];
+const cursor = {
+  x: 0,
+  y: 0,
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  for (let i = 0; i < 40; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    document.body.appendChild(dot);
+    dots.push(dot);
+  }
+});
+
+document.addEventListener("mousemove", (e) => {
+  cursor.x = e.clientX;
+  cursor.y = e.clientY;
+});
+
+function draw() {
+  if (finished) {
+  let x = cursor.x;
+  let y = cursor.y;
+
+  dots.forEach((dot, index) => {
+    const nextDot = dots[index + 1] || dots[0];
+
+    dot.style.left = x + "px";
+    dot.style.top = y + "px";
+
+    x += (nextDot.offsetLeft - dot.offsetLeft) * 0.2;
+    y += (nextDot.offsetTop - dot.offsetTop) * 0.2;
+
+    const isArrived = Math.abs(x - dot.offsetLeft) < 0.5 && Math.abs(y - dot.offsetTop) < 0.5;
+    // If arrived, hide the dot
+    if (isArrived) {
+      dot.style.visibility = "hidden";
+    } else {
+      dot.style.visibility = "visible";
+    }
+  });
+}
+}
+
+setInterval(draw, 10);

@@ -1,9 +1,11 @@
 body{
   background-color: black;
+  overflow: hidden;
 }
 
 *{
   user-select: none;
+  overflow: none;
 }
 
 #starter_div{
@@ -36,6 +38,11 @@ h1{
   text-shadow: 0 0 15px #ffffff;
   font-size: 130%;    
 }
+
+#sine{
+  color: white
+}
+
 
 #subtitle{
   color: white;
@@ -90,8 +97,8 @@ ul {
 
 
 a{
-  color: rgb(56, 53, 255);
-  text-shadow: 0 0 15px rgb(56, 53, 255);
+  color: rgb(114, 53, 255);
+  text-shadow: 0 0 15px rgb(114, 53, 255);
   padding: 10px;
   font-size: 75%;
   font-family: 'Press Start 2P', cursive;
@@ -103,4 +110,16 @@ a:hover{
   color: white;
   text-shadow: 0 0 15px #ffffff;
   cursor: pointer;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  background: rgb(255, 255, 255);
+  opacity: 0;
+  box-shadow: 0 0 10px #ffffff;
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }
