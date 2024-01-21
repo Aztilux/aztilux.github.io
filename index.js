@@ -60,7 +60,7 @@ function startclicked() {
   .pause(1000)
   .type("<br>Load_System = { Azti's #!@#$D }")
   .type("<br>Loading_page...")
-  .type("<br>Starting audio = { Artifex27: D@#TSCYE } ")
+  .type("<br>Starting audio = { DVRST: D@#TSCYE } ")
   .type("<br>Loading = ")
   .options({ speed: 50 })
   .type("[#######################]")
