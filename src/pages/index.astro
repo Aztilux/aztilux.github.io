@@ -1,17 +1,31 @@
 ---
 import Card from '../components/Card.astro';
+import Mediaplayer from '../components/Mediaplayer.astro';
 import Layout from '../layouts/Layout.astro';
 import "../styles/global.css";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-    <div class="absolute w-full h-full flex items-center justify-center">
-        <Card></Card>
+<Layout title="Home">
+    <div class="absolute w-full h-full flex items-center justify-center gap-4">
+        <Card>
+            <h1 class="text-4xl font-bold mb-4 text-white linear-wipe">Azti</h1>
+            <p class="text-lg text-white wrap-break-word">
+                Yet another person on the internet.
+            </p>
+            <div class="socials flex text-white text-[50px] gap-4 mt-4 justify-left">
+                <a href="https://github.com/aztilux" target="_blank"><i class="fa-brands duration-500 fa-github cursor-pointer hover:text-[#e1a0ff] transition-all"></i></a>
+                <a href="https://discordapp.com/users/974396088482152478" target="_blank"><i class="fa-brands duration-500 fa-discord cursor-pointer hover:text-[#e1a0ff]"></i></a>
+            </div>
+        </Card>
+        <Mediaplayer />
     </div>
     <video autoplay muted loop class="absolute w-full h-full object-cover -z-10">
         <source src="/assets/background.mp4" type="video/mp4" />
-</Layout>
+    </video>
 
+    <style>
+        h1, p {
+            cursor: default;
+        }
+    </style>
+</Layout>
