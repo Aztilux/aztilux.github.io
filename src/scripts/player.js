@@ -1,5 +1,17 @@
 export class AudioPlayer {
+    static instance = new AudioPlayer();
+
+    static getInstance() {
+        if (!AudioPlayer.instance) {
+            AudioPlayer.instance = new AudioPlayer();
+        }
+        return AudioPlayer.instance;
+    }
+
     constructor() {
+        if (AudioPlayer.instance) {
+            return AudioPlayer.instance;
+        }
         this.audio = new Audio();
         this.isPlaying = false;
         this.currentTrackIndex = 0;
@@ -12,6 +24,8 @@ export class AudioPlayer {
             }
             // Add more tracks here
         ];
+
+        AudioPlayer.instance = this;
     }
 
     init() {
@@ -24,16 +38,30 @@ export class AudioPlayer {
         this.nextButton = document.getElementById('player_next');
 
         // Set up event listeners
-        this.playButton.addEventListener('click', () => this.togglePlay());
-        this.prevButton.addEventListener('click', () => this.previousTrack());
-        this.nextButton.addEventListener('click', () => this.nextTrack());
-        this.seekBar.addEventListener('input', () => this.seek());
+        if (this.playButton && this.prevButton && this.nextButton && this.seekBar) {
+            this.playButton.addEventListener('click', () => this.togglePlay());
+            this.prevButton.addEventListener('click', () => this.previousTrack());
+            this.nextButton.addEventListener('click', () => this.nextTrack());
+            this.seekBar.addEventListener('input', () => this.seek());
+            this.audio.addEventListener('timeupdate', () => this.updateTime());
+            this.audio.addEventListener('loadedmetadata', () => this.updateDuration());
+            this.loadTrack(this.currentTrackIndex);
+        }
         
-        this.audio.addEventListener('timeupdate', () => this.updateTime());
-        this.audio.addEventListener('loadedmetadata', () => this.updateDuration());
-        
-        // Load first track
-        this.loadTrack(this.currentTrackIndex);
+    }
+
+    cleanup() {
+            if (this.audio) {
+                this.audio.pause();
+                this.audio.currentTime = 0;
+            }
+            // Remove event listeners
+            if (this.playButton) this.playButton.removeEventListener('click', () => this.togglePlay());
+            if (this.prevButton) this.prevButton.removeEventListener('click', () => this.previousTrack());
+            if (this.nextButton) this.nextButton.removeEventListener('click', () => this.nextTrack());
+            if (this.seekBar) this.seekBar.removeEventListener('input', () => this.seek());
+            this.audio.removeEventListener('timeupdate', () => this.updateTime());
+            this.audio.removeEventListener('loadedmetadata', () => this.updateDuration());
     }
 
     loadTrack(index) {
@@ -41,7 +69,7 @@ export class AudioPlayer {
         this.audio.src = track.src;
         document.getElementById('player_title').textContent = track.title;
         document.getElementById('player_author').textContent = track.artist;
-        document.querySelector('img').src = track.cover;
+        document.getElementById('player_art').src = track.cover;
     }
 
     togglePlay() {
@@ -74,6 +102,8 @@ export class AudioPlayer {
     }
 
     updateTime() {
+        if (!this.seekBar || !this.currentTimeDisplay || !this.audio.duration) return;
+        
         const percent = (this.audio.currentTime / this.audio.duration) * 100;
         this.seekBar.value = percent;
         this.currentTimeDisplay.textContent = this.formatTime(this.audio.currentTime);
