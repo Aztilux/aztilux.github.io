@@ -1,0 +1,10 @@
+---
+const { class: className } = Astro.props;
+import '../styles/styles.css';
+---
+
+<article class={`mx-auto rounded-3xl backdrop-blur-md bg-white/30 border-solid outline-3 outline-white 
+                duration-250 hover:outline-[#e1a0ff] p-8 ml-10 mr-10 max-w-300 flex flex-col 
+                justify-center ${className}`}>
+    <slot />
+</article>
