@@ -6,11 +6,19 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent !important;
-  animation: shine 1.5s linear infinite reverse;
+  animation: shine 3s linear infinite reverse;
 }
-
 @keyframes shine {
   to {
     background-position: 200% center;
   }
+}
+
+.bounce {
+  animation: bounce 2s ease infinite;
+}
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-10px);}
+	60% {transform: translateY(-10px);}
 }

@@ -3,8 +3,8 @@ const { class: className } = Astro.props;
 import '../styles/styles.css';
 ---
 
-<article class={`mx-auto rounded-3xl backdrop-blur-md bg-white/30 border-solid outline-3 outline-white 
-                duration-250 hover:outline-[#e1a0ff] p-8 ml-10 mr-10 max-w-300 flex flex-col 
-                justify-center ${className}`}>
+<article class={`mx-auto z-10 rounded-3xl w-full lg:w-auto backdrop-blur-md bg-white/30 border-solid outline-2 outline-white 
+                duration-250 hover:outline-[#e1a0ff] p-8 max-w-[90%] flex flex-col 
+                justify-center shadow-[6px_11px_11px_5px_rgba(0,0,0,0.3)] ${className}`}>
     <slot />
 </article>

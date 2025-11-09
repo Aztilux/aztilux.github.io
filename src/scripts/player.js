@@ -45,7 +45,7 @@ export class AudioPlayer {
     }
 
     togglePlay() {
-        this.playButton.classList.remove('linear-wipe');
+        this.playButton.classList.remove('linear-wipe', 'bounce');
         if (this.isPlaying) {
             this.audio.pause();
             this.playButton.textContent = 'play_arrow';
