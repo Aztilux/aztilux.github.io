@@ -2,6 +2,7 @@
 import Card from '../components/Card.astro';
 import Mediaplayer from '../components/Mediaplayer.astro';
 import Layout from '../layouts/Layout.astro';
+import Social from '../components/Social.astro';
 import "../styles/global.css";
 ---
 
@@ -13,8 +14,8 @@ import "../styles/global.css";
                 Yet another person on the internet.
             </p>
             <div class="socials flex text-white text-[50px] gap-4 mt-4 justify-left">
-                <a href="https://github.com/aztilux" target="_blank"><i class="fa-brands duration-500 fa-github cursor-pointer hover:text-[#e1a0ff] transition-all"></i></a>
-                <a href="https://discordapp.com/users/974396088482152478" target="_blank"><i class="fa-brands duration-500 fa-discord cursor-pointer hover:text-[#e1a0ff]"></i></a>
+                <Social href="https://github.com/aztilux" class="fa-brands fa-github" />
+                <Social href="https://discordapp.com/users/974396088482152478" class="fa-brands fa-discord" />
             </div>
         </Card>
         <Mediaplayer />
