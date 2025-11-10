@@ -1,6 +1,21 @@
 ---
+import Mediaplayer from '../components/Mediaplayer.astro';
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
 import "../styles/global.css";
 ---
 
-<Layout title="About Me"></Layout>
+<Layout title="About Me">
+    <div class="absolute w-full flex items-center justify-center gap-4">
+        <Mediaplayer />
+        <Card class="mt-10 lg:mt-0 w-full h-1/2 lg:h-auto lg:w-150">
+            <Button href="/about-me">About me</Button>
+            <h1 class="text-4xl font-bold mb-4 text-white linear-wipe">Azti</h1>
+            <p class="text-lg text-white wrap-break-word">
+                Idk bruh I think I cooked
+            </p>
+                <Button>WIP</Button>
+        </Card>
+    </div>
+</Layout>

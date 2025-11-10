@@ -3,22 +3,27 @@ import Card from '../components/Card.astro';
 import Mediaplayer from '../components/Mediaplayer.astro';
 import Layout from '../layouts/Layout.astro';
 import Social from '../components/Social.astro';
+import Button from '../components/Button.astro';
 import "../styles/global.css";
 ---
 
 <Layout title="Home">
-    <div class="absolute w-full h-full flex items-center justify-center gap-4">
-        <Card class="w-full lg:w-150">
+    <div class="absolute w-full h-full grid grid-rows-[2fr_1fr] grid-cols-1 lg:flex items-center justify-center gap-4">
+        <Card class="mt-10 lg:mt-0 w-full h-auto lg:flex-initial h-full lg:h-auto lg:w-150">
             <h1 class="text-4xl font-bold mb-4 text-white linear-wipe">Azti</h1>
             <p class="text-lg text-white wrap-break-word">
                 Idk bruh I think I cooked
             </p>
+            <div class="block md:flex justify-center mt-4 gap-2">
+                <Button href="/about-me">About me</Button>
+                <Button>WIP</Button>
+            </div>
             <div class="socials flex text-white text-[50px] gap-4 mt-4 justify-center">
                 <Social href="https://github.com/aztilux" class="fa-brands fa-github" />
                 <Social href="https://discordapp.com/users/974396088482152478" class="fa-brands fa-discord" />
             </div>
         </Card>
-        <Mediaplayer />
+        <Mediaplayer class="bottom-5 left-5 right-5" />
     </div>
 
     <style>

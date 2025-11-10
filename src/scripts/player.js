@@ -1,5 +1,5 @@
 export class AudioPlayer {
-    static instance = new AudioPlayer();
+    static instance
 
     static getInstance() {
         if (!AudioPlayer.instance) {
@@ -9,20 +9,21 @@ export class AudioPlayer {
     }
 
     constructor() {
-        if (AudioPlayer.instance) {
-            return AudioPlayer.instance;
-        }
-        this.audio = new Audio();
         this.isPlaying = false;
         this.currentTrackIndex = 0;
         this.tracks = [
+            {
+                title: "Trance",
+                artist: "Metro Boomin, Travis Scott & Young Thug",
+                src: "/assets/music/Trance.mp3",
+                cover: "/assets/music/Trance.jpg"
+            },
             {
                 title: "True Love",
                 artist: "Carrion y Saske",
                 src: "/assets/music/True Love.mp3",
                 cover: "/assets/music/True Love.jpg"
             }
-            // Add more tracks here
         ];
 
         AudioPlayer.instance = this;
@@ -30,6 +31,11 @@ export class AudioPlayer {
 
     init() {
         // Get DOM elements
+        if (this.audio) {
+            this.oldaudio = this.audio;
+        }
+        this.audio = new Audio();
+        console.log(this.isPlaying)
         this.seekBar = document.getElementById('seek-bar');
         this.currentTimeDisplay = document.getElementById('current-time');
         this.durationDisplay = document.getElementById('duration');
@@ -46,6 +52,18 @@ export class AudioPlayer {
             this.audio.addEventListener('timeupdate', () => this.updateTime());
             this.audio.addEventListener('loadedmetadata', () => this.updateDuration());
             this.loadTrack(this.currentTrackIndex);
+        } else {
+            this.cleanup();
+        }
+
+        if (this.isPlaying == true) {
+            this.audio.addEventListener('loadedmetadata', () => {
+                this.audio.currentTime = this.oldaudio.currentTime;
+                this.audio.play();
+                this.oldaudio.pause(); // keeps full fractional precision
+            });
+            this.playButton.textContent = 'pause';
+            this.playButton.classList.remove('linear-wipe', 'bounce');
         }
         
     }
@@ -55,7 +73,6 @@ export class AudioPlayer {
                 this.audio.pause();
                 this.audio.currentTime = 0;
             }
-            // Remove event listeners
             if (this.playButton) this.playButton.removeEventListener('click', () => this.togglePlay());
             if (this.prevButton) this.prevButton.removeEventListener('click', () => this.previousTrack());
             if (this.nextButton) this.nextButton.removeEventListener('click', () => this.nextTrack());
@@ -67,6 +84,7 @@ export class AudioPlayer {
     loadTrack(index) {
         const track = this.tracks[index];
         this.audio.src = track.src;
+        this.audio.currentTime = 0;
         document.getElementById('player_title').textContent = track.title;
         document.getElementById('player_author').textContent = track.artist;
         document.getElementById('player_art').src = track.cover;
