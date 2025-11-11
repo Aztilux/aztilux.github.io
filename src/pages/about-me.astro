@@ -7,15 +7,17 @@ import "../styles/global.css";
 ---
 
 <Layout title="About Me">
-    <div class="absolute w-full flex items-center justify-center gap-4">
-        <Mediaplayer />
-        <Card class="mt-10 lg:mt-0 w-full h-1/2 lg:h-auto lg:w-150">
-            <Button href="/about-me">About me</Button>
-            <h1 class="text-4xl font-bold mb-4 text-white linear-wipe">Azti</h1>
-            <p class="text-lg text-white wrap-break-word">
-                Idk bruh I think I cooked
-            </p>
-                <Button>WIP</Button>
+    <div class="absolute w-full h-full grid grid-rows-[2fr_1fr] grid-cols-1 lg:flex items-center justify-center gap-4">
+        <Card class="mt-10 lg:mt-0 w-full h-auto lg:flex-initial lg:h-auto lg:w-150">
+            <h1 class="text-4xl font-bold text-white linear-wipe mb-6">Azti | About Me</h1>
+            <a href="/" class="absolute right-3 top-3 text-white"><i class="material-symbols-outlined" style="font-size:40px;">arrow_back</i></a>
+            <div class="max-h-110 overflow-y-auto pr-2.5 bg-gray-900/30 rounded-2xl mx-auto p-4 text-white bg-scroll lg:[scrollbar-width:none]">
+                I am Azti, a 17-year-old IT student from Spain. I enjoy developing things in my free time and I like computers in general.<br><br>
+                I like playing all types of games, but especially sandbox games. In the end, what I really enjoy is playing with friends.<br><br>
+                I am also constantly listening to music. I don't really have a favorite genre; as long as it sounds good, I'll probably vibe with it.<br><br>
+                ^^ If you see this, feel free to add me on Discord.
+            </div>
         </Card>
+        <Mediaplayer class="bottom-5 left-5 right-5" />
     </div>
 </Layout>
