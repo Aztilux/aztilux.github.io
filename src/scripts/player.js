@@ -35,8 +35,8 @@ export class AudioPlayer {
             this.oldaudio = this.audio;
         }
         this.audio = new Audio();
-        console.log(this.isPlaying)
         this.seekBar = document.getElementById('seek-bar');
+        this.seekBar.value = 0;
         this.currentTimeDisplay = document.getElementById('current-time');
         this.durationDisplay = document.getElementById('duration');
         this.playButton = document.getElementById('player_start');
@@ -57,11 +57,9 @@ export class AudioPlayer {
         }
 
         if (this.isPlaying == true) {
-            this.audio.addEventListener('loadedmetadata', () => {
-                this.audio.currentTime = this.oldaudio.currentTime;
-                this.audio.play();
-                this.oldaudio.pause(); // keeps full fractional precision
-            });
+            this.audio.currentTime = this.oldaudio.currentTime;
+            this.audio.play();
+            this.oldaudio.pause(); // keeps full fractional precision
             this.playButton.textContent = 'pause';
             this.playButton.classList.remove('linear-wipe', 'bounce');
         }
