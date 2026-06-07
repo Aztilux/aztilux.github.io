@@ -1,6 +1,5 @@
 ---
 import Card from '../components/Card.astro';
-import Mediaplayer from '../components/Mediaplayer.astro';
 import Layout from '../layouts/Layout.astro';
 import Social from '../components/Social.astro';
 import Button from '../components/Button.astro';
@@ -9,7 +8,7 @@ import "../styles/global.css";
 
 <Layout title="Home">
     <div class="absolute w-full h-full grid grid-rows-[2fr_1fr] grid-cols-1 lg:flex items-center justify-center gap-4">
-        <Card class="mt-10 lg:mt-0 w-full h-auto lg:flex-initial h-full lg:h-auto lg:w-150">
+        <Card class="mt-10 lg:mt-0 w-full h-auto lg:flex-initial lg:h-auto lg:w-150">
             <h1 class="text-5xl font-bold text-white linear-wipe">Azti</h1>
             <p class="text-2xl text-white mb-4 wrap-break-word">Yo welcome ^^</p>
             <div class="block md:flex justify-center mt-4 gap-2">
@@ -21,7 +20,6 @@ import "../styles/global.css";
                 <Social href="https://discordapp.com/users/974396088482152478" class="fa-brands fa-discord" />
             </div>
         </Card>
-        <Mediaplayer class="bottom-5 left-5 right-5" />
     </div>
 
     <style>
